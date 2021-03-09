@@ -241,6 +241,18 @@ article pre {
     border: 0;
 }
 
+// Debugging background color to distinguish GitHub and GitLab sections
+$debug_github_gitlab_sections: true;
+
+@if $debug_github_gitlab_sections {
+    article[id^='github-'] {
+        background-color: #fafff4;
+    }
+    article[id^='gitlab-'] {
+        background-color: #fff7ea;
+    }
+}
+
 //----------------------------------------
 // Miscellaneous.
 //----------------------------------------

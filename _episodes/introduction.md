@@ -173,6 +173,10 @@ you're unlikely to find cost-free platforms to help you deliver dynamic content.
 > {: .solution }
 {: .challenge }
 
+{::options parse_block_html="true" /}
+
+<article id="github-01">
+
 ## GitHub Pages
 
 If the site you want to create is a good match to the strengths of a static site generator -
@@ -184,6 +188,26 @@ The service is free for public repositories and simple pages can be created and 
 Behind the scenes GitHub Pages uses a static site generator called Jekyll, which we're going to learn about later in this lesson.
 First, we need to learn more about how to author and format the content of our pages,
 before configuring GitHub to display this content as a website.
+
+</article>
+
+<article id="gitlab-01">
+
+## GitLab Pages
+
+If the site you want to create is a good match to the strengths of a static site generator -
+it's relatively small, will be updated relatively infrequently, and the content does not need to be personalised to the visitor -
+then creating it with GitLab Pages is a good option.
+GitLab Pages is a system allowing users to create and serve websites directly from their GitLab repositories.
+The service is free for public repositories and simple pages can be created and served with very little configuration required.
+
+Behind the scenes GitLab Pages uses a static site generator to produce your website.
+In the next section we will configure GitLab Pages to use the Jekyll static site generator,
+which we're going to learn about later in this lesson.
+First, we need to learn more about how to author and format the content of our pages,
+before configuring GitLab to display this content as a website.
+
+</article>
 
 ## Setting Up a Repository
 
@@ -199,12 +223,82 @@ though it can be handy if you need to revert to old versions
 In this lesson we will be working with this folder on the web to control
 the website we will be creating.
 
+{::options parse_block_html="true" /}
+
+<article id="github-02">
+
+## GitHub Pages
+
 > ## Setup a GitHub account
 > Before you can create a repo, you will need to
 > [create a GitHub account](https://github.com/join)
 {: .callout}
 
 Make sure to login with your GitHub account and visit https://github.com.
+Click the green "New" repo button on the left hand side of GitHub:
+
+<img src="../fig/new_repo_button.png" alt="Green New Repo Button" width="100">
+
+**or** click the "+" menu in the upper righthand corner and
+choose "New Repository".
+
+<img src="../fig/plus_new_repo.png" alt="Dropdown plus menu with new repository option highlighted" width="200">
+
+Next you will need to fill in some info about your repository.
+
+<img src="../fig/blank_new_repo.png" alt="Blank new repository page" width="600">
+
+In this lesson, we will be working on a general group website.
+You can imagine this website may be for your lab group, a specific project group,
+or another group you work with.
+Under the "Repository name" field type `group-website`.
+
+<img src="../fig/set_repo_name.png" alt="Repository name set to group-website" width="600">
+
+We can also add a description (for instance **Repo for learning how to make websites with jekyll pages**) so we know what this repo is when we find it again after the workshop.
+
+<img src="../fig/set_repo_description.png" alt="Repository name set to group-website" width="600">
+
+Under the "Initialize this repository with:" section we will check `Add a README file`
+and `Choose a license`.  It is good practice to have a README file that gives more information
+about your repo and to set a license for your work.
+
+<img src="../fig/initialize_readme_license.png" alt="Repository name set to group-website" width="600">
+
+for this example repository we’ll use the `Creative Commons Zero v1.0 Universal` (CC0) license,
+which allows anyone to re-use and adapt the content of the repository without restriction,
+but you may want to consider choosing something more restrictive when you’re building
+your own website.
+
+> ## Checkout other licenses
+> You may want to checkout [this lesson](https://swcarpentry.github.io/git-novice/11-licensing/index.html) or
+> [GitHub's license documentation](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/licensing-a-repository)
+> for more information about possible licenses.
+{: .callout}
+
+<img src="../fig/set_CC0_license.png" alt="Repository name set to group-website" width="400">
+
+Once you've finished these steps you can click the "Create Repository" button to
+finish creating the repo.
+
+<img src="../fig/create_repository.png" alt="Filled in form with a create repository button" width="600">
+
+GitHub will then setup the repo and it should look like the following screenshot.
+
+<img src="../fig/group_website_repo.png" alt="Github repository for the group website" width="800">
+
+</article>
+
+<article id="gitlab-02">
+
+> ## Setup a GitLab account
+> Before you can create a repo, you will need to
+> [create a GitLab account](https://gitlab.com/users/sign_up)
+{: .callout}
+
+Make sure to login with your GitLab account and visit https://gitlab.com.
+
+
 Click the green "New" repo button on the left hand side of GitHub:
 
 <img src="../fig/new_repo_button.png" alt="Green New Repo Button" width="100">
@@ -257,6 +351,8 @@ finish creating the repo.
 GitHub will then setup the repo and it should look like the following screenshot.
 
 <img src="../fig/group_website_repo.png" alt="Github repository for the group website" width="800">
+
+</article>
 
 [qwantz-easter-egg-ext]: https://chrome.google.com/webstore/detail/dinosaur-comics-easter-eg/bojkkeeefjmeogpgnlomodfkkfkfhabj
 
