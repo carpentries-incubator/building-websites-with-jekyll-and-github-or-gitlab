@@ -8,11 +8,13 @@ questions:
 objectives:
 - "Substitute variable values into page content"
 - "Adjust the configuration of the site and individual pages"
+- "Learn how to identify and correct errors that lead to Jekyll build failures"
 keypoints:
 - "Variables can be defined globally in `_config.yml` or locally within YAML header (*front matter*) of a page"
 - "Variable values can be substituted into page content with Liquid notation: `{{ variable }}`"
 - "Global variables are accessible from any page of your website; local variables can only be accessed within
 the page in which they were defined (and any pages that include this page)"
+- "Errors can happen but Jekyll will often tell us what's wrong"
 ---
 
 [Jekyll](https://jekyllrb.com/) is a powerful static site generator behind GitHub Pages. It creates static HTML
@@ -164,6 +166,84 @@ Let's make use of global parameters in our pages.
 > Jekyll's global parameters are a useful way to keep all your site-wide configuration in
 > a single place (even if you only use them once). In combination with Jekyll layouts/templates (to be covered in the next episode) they are a great way of creating reusable markup snippets that can be repeated on multiple or even on every page of your website. Reuse helps you reduce the amount of code you have to write.
 {: .callout}
+
+## When things go wrong
+
+So far we have seen how to successfully use Jekyll to produce a website.
+There are however some situations where Jekyll may fail to do so
+either due to a typo or missing information.
+
+> ## Exercise: Troubleshooting Jekyll
+>
+> This exercise will help you recognise how common mistakes look like
+> when working with these elements of a Jekyll website.
+>
+> Edit your `_config.yml` file and omit a closing quote `"` in one of the variables.
+>
+> > ## Solution
+> >
+> > For instance, a missing closing quote `"` in the `twitter` variable.
+> > ~~~
+> > title: "Building Websites in GitHub"
+> > description: "This research project develops training materials for reseachers wanting to learn to build project
+> > websites in GitHub with GitHub Pages."
+> > email: "team@carpentries.org"
+> > twitter: "https://twitter.com/thecarpentries
+> > ~~~
+> > {: .language-yaml}
+> >
+> > If you navigate your GitHub repository you would be able to see something break in `about.md` where we use `{% raw %}{{ site.twitter }}{% endraw %}` however,
+> > contrary to what we saw before with invalid Markdown,
+> > Jekyll will refuse to build the website and produce an error message.
+> >
+> > We will see after this where to find the error message and identify what caused them.
+> {: .solution }
+{: .challenge }
+
+If you were keeping an eye on the GitHub repository page until now, you may have noticed 
+a yellow circle visible when the website is still being processed and a green check mark (✓) when successful.
+You may have also noticed that in the same location there is now a red cross next to the commit message (❌).
+
+This indicates that something went wrong with our Jekyll build process.
+
+![Jekyll pending/successful build](../fig/includes_fail_pending_successful.png)
+
+You may also find an email from GitHub in your inbox with details about the error.
+But lets look at our repository again.
+If we click the red cross next to the commit message (❌) a little pop-up will appear with additional information.
+
+![Jekyll failed to build](../fig/includes_build_error.png)
+
+Visiting the page behind the **Details** link will give us the information we were missing.
+
+![Jekyll failed to build detail](../fig/includes_build_error_detail.png)
+
+From this page we can see that what caused the failure affected line 5 of the `_config.yml` file.
+This matches the line where we deleted the `"`.
+Since this typo prevents Jekyll from building the page, the process cannot continue.
+
+> ## Failure will not remove your website
+>
+> Given the failure you may be wondering what happened to the website?
+> If you visit the address you will find that the website is still be available.
+>
+> GitHub will keep your previous version online until the error is fixed
+> and a new build is completed successfully.
+{: .callout }
+
+Lets go ahead and fix your intentional typo and re-add the missing `"`:
+
+~~~
+title: "Building Websites in GitHub"
+description: "This research project develops training materials for reseachers wanting to learn to build project
+websites in GitHub with GitHub Pages."
+email: "team@carpentries.org"
+twitter: "https://twitter.com/thecarpentries"
+~~~
+{: .language-yaml}
+
+After a few seconds we should see a green checkmark again and our website will be updated.
+
 
 ## Local Parameters
 
