@@ -346,8 +346,22 @@ If you would like to order a collection by a different field in the YAML header,
 you can pass the collection through the [`sort`][liquid-sort] filter
 when initialising the for loop:
 
+You might be tempted to write:
 ~~~
 {% raw %}{% for post in site.posts | sort: "author" %}{% endraw %}
+~~~
+{: .warning }
+
+which seems to work but may not produce the result we expect.
+
+In fact, Jekyll will generate a **silent warning** that isn't visible in GitHub
+but can be seen if building the site locally.
+This a limitation of liquid in that it doesn't allow combining `for` instructions directly
+with filters.
+Instead, we need to reuse the `assign` instruction we used above:
+~~~
+{% raw %}{% assign sorted_posts = site.posts | sort: "author" %}
+{% for post in sorted_posts %}{% endraw %}
 ~~~
 {: .source }
 
